@@ -14,5 +14,32 @@
   text-align: center;
 }
 small {
-  font-size: 80%;
+  font-size: 65%;
+}
+
+
+/* 颜色系列 */
+h2 > small {
+	/* color: black; */
+}
+.huise{
+	color:#777777;
+}
+.green{
+	color: green;
+}
+.blue{
+	color: blue;
+}
+.orange{
+	color: orange;
+}
+.pink{
+	color: #ff69b4;
+}
+.red{
+	color: red;
+}
+.purple{
+	color: purple;
 }
