@@ -25,21 +25,21 @@ h2 > small {
 .huise{
 	color:#777777;
 }
-.green{
-	color: green;
-}
 .blue{
-	color: blue;
-}
-.orange{
-	color: orange;
+	color: #428bca;
 }
 .pink{
 	color: #ff69b4;
 }
 .red{
-	color: red;
+	color: #ff0000;
 }
 .purple{
-	color: purple;
+	color: #6f42c1;
+}
+.orange{
+	color: #ff8c00;
+}
+.green{
+	color: #5cb85c;
 }
