@@ -1,3 +1,23 @@
+/* h1 2em
+h2 1.5em
+h3 1.17em
+h4 1em
+h5 0.83em
+h6 0.67em */
+
+
+csthr {
+	height: 0;
+	-webkit-box-sizing: content-box;
+	   -moz-box-sizing: content-box;
+	        box-sizing: content-box;
+}
+
+h3{
+	border: 1px solid #ffffff;
+}
+
+
 /* cst自定义 */
 .simple {
 	font-size: 8px;
@@ -74,7 +94,17 @@ code {
 	margin: 40px 0 20px;
 	border-bottom: 1px solid #eee;
 }
-
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
 .text-left {
 	text-align: left;
 }

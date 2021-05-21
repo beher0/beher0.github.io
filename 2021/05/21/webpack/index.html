@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>认识Webpack | SimpleLife</title><meta name="keywords" content="webpack安装,前端模块化,打包"><meta name="author" content="SimpleLife"><meta name="copyright" content="SimpleLife"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习webpack工具，模块化开发思想">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识Webpack">
+<meta property="og:url" content="http://simplelifecst.github.io/2021/05/21/webpack/index.html">
+<meta property="og:site_name" content="SimpleLife">
+<meta property="og:description" content="学习webpack工具，模块化开发思想">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//20210521150335.png">
+<meta property="article:published_time" content="2021-05-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-21T14:27:54.169Z">
+<meta property="article:author" content="SimpleLife">
+<meta property="article:tag" content="webpack安装">
+<meta property="article:tag" content="前端模块化">
+<meta property="article:tag" content="打包">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//20210521150335.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//Snipaste_2021-05-16_20-41-27.ico"><link rel="canonical" href="http://simplelifecst.github.io/2021/05/21/webpack/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: SimpleLife","link":"链接: ","source":"来源: SimpleLife","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '认识Webpack',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-21 22:27:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link href="/css/font.css" rel="stylesheet"><link href="/css/mybootstrap.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//guidao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-zhiding1"></i><span> 置顶</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/github/"><i class="fa-fw iconfont icon-github"></i><span> Github Hexo</span></a></li><li><a class="site-page child" href="/vue/"><i class="fa-fw iconfont icon-vue"></i><span> Vue</span></a></li><li><a class="site-page child" href="/bootstrap/"><i class="fa-fw iconfont icon-bootstrap"></i><span> Bootstrap</span></a></li><li><a class="site-page child" href="/repository/"><i class="fa-fw iconfont icon-icon-"></i><span> Repository</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw iconfont icon-yinle_huaban1"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw iconfont icon-zhaopian1"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont icon-dianying1"></i><span> 电影</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont icon-bilibili-fill1"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw iconfont icon-liuyan"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//20210521150335.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">SimpleLife</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-zhiding1"></i><span> 置顶</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/github/"><i class="fa-fw iconfont icon-github"></i><span> Github Hexo</span></a></li><li><a class="site-page child" href="/vue/"><i class="fa-fw iconfont icon-vue"></i><span> Vue</span></a></li><li><a class="site-page child" href="/bootstrap/"><i class="fa-fw iconfont icon-bootstrap"></i><span> Bootstrap</span></a></li><li><a class="site-page child" href="/repository/"><i class="fa-fw iconfont icon-icon-"></i><span> Repository</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw iconfont icon-yinle_huaban1"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw iconfont icon-zhaopian1"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont icon-dianying1"></i><span> 电影</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont icon-bilibili-fill1"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw iconfont icon-liuyan"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">认识Webpack</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-20T16:00:00.000Z" title="发表于 2021-05-21 00:00:00">2021-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-21T14:27:54.169Z" title="更新于 2021-05-21 22:27:54">2021-05-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Webpack/">Webpack</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="认识Webpack"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h2><div class="page-header">
+  <h3>前言</h3>
+  <p>
+    在<cst>JavaScript</cst>发展初期就是为了实现简单的页面交互逻辑，寥寥数语即可；如今CPU、浏览器性能得到了极大的提升，很多页面逻辑迁移到了客户端（表单验证等），随着<cst>web2.0时代</cst>的到来，<cst>Ajax技术</cst>得到广泛应用，<cst>jQuery</cst>等前端库层出不穷，前端代码日益膨胀，此时在JS方面就会考虑使用<cst>模块化规范</cst>去管理。
+  </p>
+</div>
+
+
+<div class="page-header">
+<h3>理解模块化</h3>
+<p>
+模块化是一个语言发展的必经之路，其能够帮助开发者拆分和组织代码，随着前端技术的发展，前端编写的代码量也越来越大，就需要对代码有很好的管理，而模块化能够帮助开发者解决命名冲突、管理依赖、提高代码的可读性、代码解耦以及提高代码的复用性。
+  </p>
+</div>
+
+<div class="page-header">
+<h3>描述</h3>
+<p>
+模块化开发其实就是封装细节，提供使用接口，彼此之间互不影响，每个模块都是实现某一特定的功能，同时也需要避免全局变量的污染，最初通过函数实现模块，实际上是利用了函数的局部作用域来形成模块。
+</p>
+</div>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述的<code>func1</code>与<code>func2</code>函数分别形成了两个模块，需要使用的时候直接调用即可，但是这样无法保证不与其他模块发生变量名冲突，而且模块成员之间看不出直接关系，再之后便有使用对象作为模块，将成员的都放置于对象中。</p>
+<div class="page-header"><h3>模块化规范</h3><p><cst>CommonJs、AMD、CMD、ES6</cst>都是用于模块化定义中使用的规范，其为了规范化模块的引入与处理模块之间的依赖关系以及解决命名冲突问题，并使用模块化方案来使复杂系统分解为代码结构更合理，可维护性更高的可管理的模块。</p></div>
+
+<div class="page-header">
+<h3>CommonJS</h3>
+ <p>
+   <cst>CommonJS</cst>是<cst>NodeJs</cst>服务器端模块的规范，根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。CommonJS规范规定，每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性是对外的接口。加载某个模块，其实是加载该模块exports属性。总之，<cst>CommonJS规范通过require导入，module.exports与exports进行导出。</cst>
+  </p>
+</div>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.js，定义变量、函数等</span></span><br><span class="line"><span class="keyword">var</span> a  = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出方法，类似对象定义</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">a</span>: a,</span><br><span class="line">    <span class="attr">b</span>: b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// 当导出的模块名与被导出的成员或方法重名时可以有如下写法</span></span><br><span class="line"><span class="comment">module.exports = &#123;</span></span><br><span class="line"><span class="comment">    a,</span></span><br><span class="line"><span class="comment">    b</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2.js  导入方式一</span></span><br><span class="line"><span class="keyword">const</span> m1 = <span class="built_in">require</span>(<span class="string">&quot;./1.js&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(m1.a); <span class="comment">// 1</span></span><br><span class="line">m1.b(); <span class="comment">// 1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><cst>require是依赖于node环境的，所以CommonJS是Node服务端的规范，我们将学一下ES6模块化</cst></p>
+<div class="page-header">
+<h3>ES6</h3>
+  <p></p>
+</div>
+
+<p><code>ES6</code>在语言标准的层面上实现了模块的功能，是为了成为浏览器和服务器通用的模块解决方案，<code>ES6</code>标准使用<code>export</code>与<code>export default</code>来导出模块，使用<code>import</code>导入模块</p>
+<p>导出方式两种<code>export</code> 和 <code>export default</code></p>
+<ul>
+<li><code>export</code> 能按需导入，<code>export default</code> 不行</li>
+<li><code>export</code>  可以有多个，<code>export default</code> 仅有一个</li>
+<li><code>export</code>能直接导出变量表达式，<code>export default</code>不行。</li>
+<li><code>export</code>方式导出，在导入时要加<code>&#123;&#125;</code>，<code>export default</code>则不需要。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出单个特性</span></span><br><span class="line"><span class="comment">// 在js定义变量、</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1, name2, …, nameN; <span class="comment">// also var, const</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1 = …, name2 = …, …, nameN; <span class="comment">// also var, const</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">FunctionName</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出列表</span></span><br><span class="line"><span class="keyword">export</span> &#123; name1, name2, …, nameN &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重命名导出，引用的时候是newname1，newname2</span></span><br><span class="line"><span class="keyword">export</span> &#123; name1 <span class="keyword">as</span> newname1, name2 <span class="keyword">as</span> newname2 , …, nameN &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> expression;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">…</span>) </span>&#123; … &#125; <span class="comment">// also class, function*</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">name1</span>(<span class="params">…</span>) </span>&#123; … &#125; <span class="comment">// also class, function*</span></span><br><span class="line"><span class="keyword">export</span> &#123; name1 <span class="keyword">as</span> <span class="keyword">default</span>, … &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出模块合集</span></span><br><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> …; <span class="comment">// does not set the default export</span></span><br><span class="line"><span class="keyword">export</span> * <span class="keyword">as</span> name1 <span class="keyword">from</span> …; <span class="comment">// Draft ECMAScript® 2O21</span></span><br><span class="line"><span class="keyword">export</span> &#123; name1, name2, …, nameN &#125; <span class="keyword">from</span> …;</span><br><span class="line"><span class="keyword">export</span> &#123; import1 <span class="keyword">as</span> name1, import2 <span class="keyword">as</span> name2, …, nameN &#125; <span class="keyword">from</span> …;</span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> &#125; <span class="keyword">from</span> …;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> defaultMember <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> name <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; member &#125; <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; member <span class="keyword">as</span> alias &#125; <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; member1 , member2 &#125; <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; member1 , member2 <span class="keyword">as</span> alias2 , [...] &#125; <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> defaultMember, &#123; member [ , [...] ] &#125; <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> defaultMember, * <span class="keyword">as</span> name <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;module-name&quot;</span>; <span class="comment">// 将运行模块中的全局代码, 但实际上不导入任何值。</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常用的导出方式</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">	a,</span><br><span class="line">  b,</span><br><span class="line">  c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入方式</span></span><br><span class="line"><span class="keyword">import</span> &#123;a,b,c&#125; <span class="keyword">from</span> <span class="string">&#x27;./a.js&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<div class="page-header">
+<h3>引用JS文件</h3>
+  <p class="blue">在引用JS文件时，需要给js添加type类型module，确保它是一个单独的模块</p>
+</div>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;./a.js&quot;</span> type=<span class="string">&quot;module&quot;</span> charset=<span class="string">&quot;utf-8&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./b.js&quot;</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<div class="page-header">
+<h3>前端模块化雏形</h3>
+  <p>前端开发，代码逐渐复杂，开发人员越来重视模块化思想，模块化雏形是通过闭包的形式出现的</p>
+</div>
+
+<h4 id="匿名闭包，解决了命名冲突问题，但是出现了代码不可复用性"><a href="#匿名闭包，解决了命名冲突问题，但是出现了代码不可复用性" class="headerlink" title="匿名闭包，解决了命名冲突问题，但是出现了代码不可复用性"></a>匿名闭包，解决了命名冲突问题，但是出现了代码不可复用性</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> name= <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">	<span class="keyword">var</span> age = <span class="number">18</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">n1,n2</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n1+n2</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<h4 id="通过obj对象导出"><a href="#通过obj对象导出" class="headerlink" title="通过obj对象导出"></a>通过obj对象导出</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.js文件</span></span><br><span class="line">;<span class="keyword">var</span> <span class="built_in">module</span> = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> obj=&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> name= <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">	<span class="keyword">var</span> age = <span class="number">18</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">n1,n2</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n1+n2</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	obj.name = name;</span><br><span class="line">	obj.age  = age;</span><br><span class="line">	obj.sum  = sum;</span><br><span class="line">	</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="comment">//-----------------------------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.js文件，引用1.js导出的obj</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(moduleA.name) <span class="comment">// logs 小明</span></span><br><span class="line">	<span class="built_in">console</span>.log(moduleA.age)  <span class="comment">// logs 18</span></span><br><span class="line">	<span class="built_in">console</span>.log(moduleA.sum(<span class="number">150</span>,<span class="number">35</span>)) <span class="comment">//logs 185</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<p><cst>早期模块化开发都是通过闭包的方式避免命名冲突，通过对象导出。规模每一个人使用的模块命名</cst></p>
+<div class="page-header"><h2>Webpack安装</h2><p>
+本质上，webpack 是一个用于现代 JavaScript 应用程序的 静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图对应映射到项目所需的每个模块，并生成一个或多个 bundle。
+</p><div style="text-align:right;"><a class="btn-beautify button--animated outline blue larger" target="_blank" rel="noopener" href="https://webpack.docschina.org/concepts/" 
+  title="Webpack官方文档"><i class="far fa-hand-point-right"></i><span>Webpack官方文档</span></a>
+</div></div>
+
+<h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><p>webpack 用于编译 JavaScript 模块。一旦完成 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/installation">安装</a>，你就可以通过 webpack <a target="_blank" rel="noopener" href="https://webpack.docschina.org/api/cli">CLI</a> 或 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/api/node">API</a> 与其配合交互。如果你还不熟悉 webpack，请阅读 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/concepts">核心概念</a> 和 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/comparison">对比</a>，了解为什么要使用 webpack，而不是社区中的其他工具。</p>
+<p><label class="red">Warning<label>：运行 webpack 5 的 Node.js 最低版本是 10.13.0 (LTS)。</p>
+<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><p>在开始之前，请确保安装了 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a> 的最新版本。使用 Node.js 最新的长期支持版本(LTS - Long Term Support)，是理想的起步。 使用旧版本，你可能遇到各种问题，因为它们可能缺少 webpack 功能， 或者缺少相关 package。</p>
+<div class="page-header"><h3>本地安装</h3><p>
+最新的 webpack 正式版本是：v5.37.1<br>
+要安装最新版本或特定版本，请运行以下命令之一：
+</p></div> 
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack</span><br><span class="line"># 或指定版本</span><br><span class="line">npm install --save-dev webpack@&lt;version&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>是否使用 <code>--save-dev</code> 取决于你的应用场景。假设你仅使用 webpack 进行构建操作，那么建议你在安装时使用 <code>--save-dev</code> 选项，因为可能你不需要在生产环境上使用 webpack。如果需要应用于生产环境，请忽略 <code>--save-dev</code> 选项。</p>
+</blockquote>
+<div class="page-header"><h3>全局安装</h3><p>通过以下 NPM 安装方式，可以使 webpack 在全局环境下可用：</p></div>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --global webpack</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>不推荐</strong> 全局安装 webpack。这会将你项目中的 webpack 锁定到指定版本，并且在使用不同的 webpack 版本的项目中， 可能会导致构建失败。</p>
+</blockquote>
+<p>我在学vue的时候，是先安装全局的webpack，便于我在任何地方使用，也许以后开发项目，不能这样安装</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">SimpleLife</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://simplelifecst.github.io/2021/05/21/webpack/">http://simplelifecst.github.io/2021/05/21/webpack/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://SimpleLifecst.github.io" target="_blank">SimpleLife</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/webpack%E5%AE%89%E8%A3%85/">webpack安装</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/">前端模块化</a><a class="post-meta__tags" href="/tags/%E6%89%93%E5%8C%85/">打包</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//20210521150335.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//weixin.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//weixin.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210520162809.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210520162809.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/05/21/vuezhiling/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//zBh7j8t6QeSnxEk.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue基础指令</div></div></a></div><div class="next-post pull-right"><a href="/2021/05/20/Html_CSS/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">HTML5、CSS、Javascript</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//guidao.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">SimpleLife</div><div class="author-info__description">生活是没有的标准的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/simplelifecst"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/simplelifecst" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dreamboy2239268289@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//weixin.jpg" target="_blank" title="Weixin"><i class="iconfont icon-weixin"></i></a><a class="social-icon" href="https://space.bilibili.com/477540505" target="_blank" title="Bilibili"><i class="iconfont icon-bilibili-fill"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content"><p style="text-align:center">一个简单的人，过着简单的生活<br>分享着简单的事，和简单的人</p></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">前端模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">理解模块化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">模块化规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text">CommonJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.6.</span> <span class="toc-text">ES6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.</span> <span class="toc-text">引用JS文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.</span> <span class="toc-text">前端模块化雏形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E9%97%AD%E5%8C%85%EF%BC%8C%E8%A7%A3%E5%86%B3%E4%BA%86%E5%91%BD%E5%90%8D%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BD%86%E6%98%AF%E5%87%BA%E7%8E%B0%E4%BA%86%E4%BB%A3%E7%A0%81%E4%B8%8D%E5%8F%AF%E5%A4%8D%E7%94%A8%E6%80%A7"><span class="toc-number">1.8.1.</span> <span class="toc-text">匿名闭包，解决了命名冲突问题，但是出现了代码不可复用性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87obj%E5%AF%B9%E8%B1%A1%E5%AF%BC%E5%87%BA"><span class="toc-number">1.8.2.</span> <span class="toc-text">通过obj对象导出</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Webpack安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E6%AD%A5"><span class="toc-number">2.1.</span> <span class="toc-text">起步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">前提条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.3.</span> <span class="toc-text">本地安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.4.</span> <span class="toc-text">全局安装</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/21/vuevfor/" title="Vue数组应用"><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//zBh7j8t6QeSnxEk.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue数组应用"/></a><div class="content"><a class="title" href="/2021/05/21/vuevfor/" title="Vue数组应用">Vue数组应用</a><time datetime="2021-05-20T16:00:00.000Z" title="发表于 2021-05-21 00:00:00">2021-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/21/vuezhiling/" title="Vue基础指令"><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//zBh7j8t6QeSnxEk.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue基础指令"/></a><div class="content"><a class="title" href="/2021/05/21/vuezhiling/" title="Vue基础指令">Vue基础指令</a><time datetime="2021-05-20T16:00:00.000Z" title="发表于 2021-05-21 00:00:00">2021-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/21/webpack/" title="认识Webpack"><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//20210521150335.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="认识Webpack"/></a><div class="content"><a class="title" href="/2021/05/21/webpack/" title="认识Webpack">认识Webpack</a><time datetime="2021-05-20T16:00:00.000Z" title="发表于 2021-05-21 00:00:00">2021-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/Html_CSS/" title="HTML5、CSS、Javascript"><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML5、CSS、Javascript"/></a><div class="content"><a class="title" href="/2021/05/20/Html_CSS/" title="HTML5、CSS、Javascript">HTML5、CSS、Javascript</a><time datetime="2021-05-19T16:00:00.000Z" title="发表于 2021-05-20 00:00:00">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/Vue2/" title="Vue基础知识"><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//zBh7j8t6QeSnxEk.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue基础知识"/></a><div class="content"><a class="title" href="/2021/05/20/Vue2/" title="Vue基础知识">Vue基础知识</a><time datetime="2021-05-19T16:00:00.000Z" title="发表于 2021-05-20 00:00:00">2021-05-20</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//152.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 By SimpleLife</div><div class="footer_custom_text">一个简单的人，做一件简单的事</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script>window.$crisp = [];
+window.CRISP_WEBSITE_ID = "1060cfec-ff96-4714-abea-4e66f111846c";
+(function () {
+  d = document;
+  s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = 1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+$crisp.push(["safe", true])
+
+if (true) {
+  $crisp.push(["do", "chat:hide"])
+  $crisp.push(["on", "chat:closed", function() {
+    $crisp.push(["do", "chat:hide"])
+  }])
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      $crisp.push(["do", "chat:hide"])
+    }
+    function chatBtnShow () {
+      $crisp.push(["do", "chat:show"])
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
