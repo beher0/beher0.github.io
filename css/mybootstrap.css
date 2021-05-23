@@ -5,6 +5,30 @@ h4 1em
 h5 0.83em
 h6 0.67em */
 
+
+/* 蓝色 428bca */
+
+.loadercss {
+    border-top: 1px solid #428bca;
+    border-bottom: 1px solid #428bca;
+    border-radius: 10px;
+}
+
+.btnclass {
+    display: flex;
+    justify-content: center
+}
+
+.cst-my-div2 {
+    margin-left: 140px;
+    padding-left: 0px;
+}
+
+.cst-my-div1 {
+    margin-right: 139px;
+    padding-right: 0px;
+}
+
 #projectpackbao {
     border-top: 1px solid #428bca;
     border-bottom: 1px solid #428bca;
