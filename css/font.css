@@ -1,8 +1,29 @@
 @font-face {
-    font-family: "iconfont";
-    /* Project id 2555228 */
-    src: url('//at.alicdn.com/t/font_2555228_d47i65eef7i.woff2?t=1621906621892') format('woff2'), url('//at.alicdn.com/t/font_2555228_d47i65eef7i.woff?t=1621906621892') format('woff'), url('//at.alicdn.com/t/font_2555228_d47i65eef7i.ttf?t=1621906621892') format('truetype');
+  font-family: "iconfont"; /* Project id 2555228 */
+  src: url('//at.alicdn.com/t/font_2555228_0sl1ymys5fm.woff2?t=1623332188066') format('woff2'),
+       url('//at.alicdn.com/t/font_2555228_0sl1ymys5fm.woff?t=1623332188066') format('woff'),
+       url('//at.alicdn.com/t/font_2555228_0sl1ymys5fm.ttf?t=1623332188066') format('truetype');
 }
+.icon-wendang:before {
+  content: "\e621";
+}
+
+.icon-wendang1:before {
+  content: "\e6aa";
+}
+
+.icon-wendang2:before {
+  content: "\e67e";
+}
+
+.icon-70BasicIcons-all-41:before {
+  content: "\e642";
+}
+
+.icon-wendang3:before {
+  content: "\e61a";
+}
+
 
 .icon-xiaochengxu:before {
     content: "\e73f";
