@@ -1,0 +1,19 @@
+/* 自定义侧边栏图标 */
+.icon-weixin,.icon-bilibili-fill{
+	font-size: 23px;
+}
+
+/* 清单 */
+.icon-zhaopian1{
+	font-size: 14px
+}
+/* 顶部导航条 */
+.icon-zhiding1,.icon-leimu2{
+	font-size: 14px
+}
+
+
+/* 颜色图标 */
+.icon-icon-{
+	color: red;
+}
