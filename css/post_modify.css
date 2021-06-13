@@ -2,3 +2,16 @@
 #post-info{
 	text-align: center;
 }
+
+/* SimpleLife网站收藏 */
+.sl ul {
+  display: flex;
+}
+.sl ul li {
+  list-style: none;
+  margin-left: 15px;
+  padding-bottom: 10px;
+}
+.sl ul li:hover {
+  border-bottom: 1px solid red;
+}
