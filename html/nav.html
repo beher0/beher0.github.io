@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleLife - 百宝盒</title>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//Snipaste_2021-05-16_20-41-27.ico">
+    <link rel="stylesheet" href="../custom_css/navstyle.css">
+    <link rel="stylesheet" href="../css/font.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="myblog_changjingge">
+            <input type="checkbox" id="check">
+            <label for="check">
+                <i v-show="isShow" class="iconfont  icon-liebiao" aria-hidden="true" id="show" @click="handleShowHide"></i>
+                <i class="iconfont  icon-xiangzuo" aria-hidden="true" id="cancel" @click="handleShowHide"></i>
+                <a href="http://www.noti.top/" target="_blank"> 
+                    <i class="iconfont  icon-home" aria-hidden="true" id="cancel_home"></i>
+                </a>
+            </label>
+            <label v-show="isShow">
+               <a href="http://www.noti.top/" target="_blank"> <i class="iconfont  icon-home" aria-hidden="true" id="showHome"></i></a>
+            </label>
+            <div class="siderbar">
+                <ul v-for="item in navbar" :key="item.id">
+                    <li @click="handleActiveSelect(item.id)">
+                        <a href="#" :class="{'topActive':item.id===currentindex}">
+                            <i class="iconfont" :class=item.icon></i>
+                            <span :class="{'active':item.id===currentindex}">{{item.name}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="main">
+                    <ul>
+                        <li>
+                            <h3 v-bloak><span class="iconfont" :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
+                            <div>
+
+                            </div>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+            <div class="footer">
+                <footer id="footer">
+                    <div class="copyright">©2021 By SimpleLife</div>
+                    <div class="footer_custom_text">一个简单的人，做一件简单的事</div>
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- js -->
+    <script src="../vue/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                currentindex: 0,
+                isShow: true,
+                navbar: [{
+                    id: 0,
+                    icon: 'icon-wendang1',
+                    name: '文档查询',
+                }, {
+                    id: 1,
+                    icon: 'icon-wangzhan',
+                    name: '网站收藏'
+                }]
+            },
+            methods: {
+                handleShowHide() {
+                    this.isShow = !this.isShow
+                },
+                handleActiveSelect(index) {
+                    this.currentindex = index
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
