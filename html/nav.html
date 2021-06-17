@@ -11,19 +11,22 @@
     <link rel="stylesheet" href="../css/font.css">
 </head>
 
+
 <body>
     <div id="app">
         <div id="myblog_changjingge">
             <input type="checkbox" id="check">
             <label for="check">
-                <i v-show="isShow" class="iconfont  icon-liebiao" aria-hidden="true" id="show" @click="handleShowHide"></i>
+                <i v-show="isShow" class="iconfont  icon-liebiao" aria-hidden="true" id="show"
+                    @click="handleShowHide"></i>
                 <i class="iconfont  icon-xiangzuo" aria-hidden="true" id="cancel" @click="handleShowHide"></i>
-                <a href="http://www.noti.top/" target="_blank"> 
+                <a href="http://www.noti.top/" target="_blank">
                     <i class="iconfont  icon-home" aria-hidden="true" id="cancel_home"></i>
                 </a>
             </label>
             <label v-show="isShow">
-               <a href="http://www.noti.top/" target="_blank"> <i class="iconfont  icon-home" aria-hidden="true" id="showHome"></i></a>
+                <a href="http://www.noti.top/" target="_blank"> <i class="iconfont  icon-home" aria-hidden="true"
+                        id="showHome"></i></a>
             </label>
             <div class="siderbar">
                 <ul v-for="item in navbar" :key="item.id">
@@ -39,9 +42,13 @@
                 <div class="main">
                     <ul>
                         <li>
-                            <h3 v-bloak><span class="iconfont" :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
-                            <div>
-
+                            <h3><span class="iconfont" :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
+                            <div v-show="currentindex===0">
+                                <!-- 这个是文档查询的子组件 -->
+                                <cpn></cpn>
+                            </div>
+                            <div v-show="currentindex===1">
+                                <www></www>
                             </div>
 
                         </li>
@@ -63,12 +70,81 @@
 
 
 
-
-
+    <template id="cpn">
+        <div class="cpn">
+            <ul >
+                <li v-for="item in file" :key="item.id">
+                    <a :href="item.url" target="_blank">
+                        <div class="cpn_wrap">
+                            <!-- logo -->
+                    <div class="cpn_logo">
+                        <img :src="item.avator">
+                    </div>
+                    <!-- 描述性内容 -->
+                    <div class="cpn_content">
+                        <div class="content_title">{{item.name}}</div>
+                        <div class="content_content">{{item.desc}}</div>
+                    </div>
+                    </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <template id="www">
+        <div>
+            <h2>wwwwwwwwwwwwwwwwwwwwwww</h2>
+            <p>wwwwwwwwwwwwwwwwwwwwwww</p>
+        </div>
+    </template>
 
     <!-- js -->
     <script src="../vue/vue.js"></script>
     <script>
+        // 文档查询
+        const cpn = Vue.extend({
+            template: '#cpn',
+            data() {
+                return {
+                    url: 'noti.tio',
+                    file: [{
+                        id: 0,
+                        url: 'https://developers.weixin.qq.com/miniprogram/dev/framework/',
+                        name: '微信官方文档',
+                        avator: 'https://gitee.com/lovehuating/image/raw/master/wechat.png',
+                        desc: '微信小程序开发文档'
+                    }, {
+                        id: 1,
+                        url: 'https://cn.vuejs.org/v2/guide/',
+                        name: 'Vue.js官方文档',
+                        avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//vue.png',
+                        desc: '渐进式JavaScript 框架'
+                    }, {
+                        id: 2,
+                        url: 'https://www.bootcss.com/',
+                        name: 'Bootstrap',
+                        avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//53.png',
+                        desc: '简洁、直观、强悍的前端开发框架，让web开发更迅速、简单'
+                    }, {
+                        id: 3,
+                        url: 'https://developer.mozilla.org/en-US/',
+                        name: 'Web开发者的文档',
+                        avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//mdnweb.png',
+                        desc: '前端开发技术文档'
+                    }, {
+                        id: 4,
+                        url: 'https://www.runoob.com/html/html5-intro.html/',
+                        name: 'HTML5',
+                        avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                        desc: '最新的HTMl5文档查询'
+                    }]
+                }
+            }
+        })
+        const www = Vue.extend({
+            template: '#www'
+        })
+
         const app = new Vue({
             el: '#app',
             data: {
@@ -78,6 +154,7 @@
                     id: 0,
                     icon: 'icon-wendang1',
                     name: '文档查询',
+                    children: []
                 }, {
                     id: 1,
                     icon: 'icon-wangzhan',
@@ -92,6 +169,10 @@
                     this.currentindex = index
                 }
             },
+            components: {
+                cpn,
+                www
+            }
         })
     </script>
 </body>
