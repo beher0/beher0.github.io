@@ -331,6 +331,7 @@
     .cpn_content {
         height: 60px;
         display: flex;
+        width: 80%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -342,7 +343,7 @@
         display: -webkit-box;
         overflow: hidden;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         width: 80%;
         color: #767a76;
     }
@@ -350,4 +351,8 @@
     .content_title {
         padding-bottom: 5px;
         color: #04a6df;
+    }
+    
+    .site_self_content_wrap {
+        color: #767a76;
     }

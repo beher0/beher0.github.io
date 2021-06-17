@@ -29,11 +29,11 @@
                         id="showHome"></i></a>
             </label>
             <div class="siderbar">
-                <ul v-for="item in navbar" :key="item.id">
-                    <li @click="handleActiveSelect(item.id)">
-                        <a href="#" :class="{'topActive':item.id===currentindex}">
+                <ul v-for="(item,index) in navbar" :key="index">
+                    <li @click="handleActiveSelect(index)">
+                        <a href="#" :class="{'topActive':index===currentindex}">
                             <i class="iconfont" :class=item.icon></i>
-                            <span :class="{'active':item.id===currentindex}">{{item.name}}</span>
+                            <span :class="{'active':index===currentindex}">{{item.name}}</span>
                         </a>
                     </li>
                 </ul>
@@ -43,12 +43,17 @@
                     <ul>
                         <li>
                             <h3><span class="iconfont" :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
-                            <div v-show="currentindex===0">
+                            <div v-show="navbar[0].name===navbar[currentindex].name">
                                 <!-- 这个是文档查询的子组件 -->
                                 <cpn></cpn>
                             </div>
-                            <div v-show="currentindex===1">
+                            <div v-show="navbar[1].name===navbar[currentindex].name">
                                 <www></www>
+                            </div>
+                            <div v-show="navbar[2].name===navbar[currentindex].name">
+                                <div class="site_self_content_wrap">
+                                    关于本站Simplelife，这里有更多的文档供你查询
+                                </div>
                             </div>
 
                         </li>
@@ -111,7 +116,7 @@
                         id: 0,
                         url: 'https://developers.weixin.qq.com/miniprogram/dev/framework/',
                         name: '微信官方文档',
-                        avator: 'https://gitee.com/lovehuating/image/raw/master/wechat.png',
+                        avator: 'https://gitee.com/lovehuating/image/raw/master/wechat2.png',
                         desc: '微信小程序开发文档'
                     }, {
                         id: 1,
@@ -151,14 +156,15 @@
                 currentindex: 0,
                 isShow: true,
                 navbar: [{
-                    id: 0,
                     icon: 'icon-wendang1',
                     name: '文档查询',
                     children: []
                 }, {
-                    id: 1,
                     icon: 'icon-wangzhan',
                     name: '网站收藏'
+                }, {
+                    icon: 'icon-information',
+                    name: '关于本站'
                 }]
             },
             methods: {
@@ -167,6 +173,7 @@
                 },
                 handleActiveSelect(index) {
                     this.currentindex = index
+                    this.navbar[index].id = this.currentindex
                 }
             },
             components: {
