@@ -5,7 +5,9 @@
         background: -ms-linear-gradient( 0deg, rgba(247, 149, 51, 0.1) 0, rgba(243, 112, 85, 0.1) 15%, rgba(239, 78, 123, 0.1) 30%, rgba(161, 102, 171, 0.1) 44%, rgba(80, 115, 184, 0.1) 58%, rgba(16, 152, 173, 0.1) 72%, rgba(7, 179, 155, 0.1) 86%, rgba(109, 186, 130, 0.1) 100%);
         background: linear-gradient( 90deg, rgba(247, 149, 51, 0.1) 0, rgba(243, 112, 85, 0.1) 15%, rgba(239, 78, 123, 0.1) 30%, rgba(161, 102, 171, 0.1) 44%, rgba(80, 115, 184, 0.1) 58%, rgba(16, 152, 173, 0.1) 72%, rgba(7, 179, 155, 0.1) 86%, rgba(109, 186, 130, 0.1) 100%);
     }
-    
+    [v-cloak]{
+        display: none;
+    }
     a {
         text-decoration: none;
     }
@@ -148,7 +150,7 @@
         left: 0px;
     }
     
-    #check:checked~label #cancel {
+    #check:checked~label #cancel{
         width: 25px;
         height: 25px;
         top: 27px;
@@ -159,7 +161,7 @@
         align-items: center;
     }
     
-    #check:checked~label #cancel_home {
+    #check:checked~label #cancel_home{
         width: 25px;
         height: 25px;
         top: 94px;
@@ -193,6 +195,7 @@
         overflow: auto;
         -ms-overflow-style: none;
     }
+    
     
     .main h3 {
         /* background-color: #fff; */
@@ -378,4 +381,51 @@
         justify-content: center;
         align-items: center;
         color: #04a6df;
+        position:relative;
+        -webkit-transition:-webkit-transform 1s,background 1s,width 1s,height 1s,font-size 1s;
+        -o-transition-property:width,height,-o-transform,background,font-size;
+        -o-transition-duration:1s,1s,1s,1s,1s;
+        -moz-transition-property:width,height,-o-transform,background,font-size;
+        -moz-transition-duration:1s,1s,1s,1s,1s;
+        transition-property:width,height,transform,background,font-size;
+        transition-duration:1s,1s,1s,1s,1s;
+       
     }
+    .www_title:hover{
+     -moz-transform: rotate(720deg);
+    -webkit-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    transform: rotate(720deg);
+    /* padding:12px 8px 0 15px; */
+    background:#1ec7e6;
+    width:60px;
+    height:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    }
+
+  .app_hidden_click1{
+      width: 460px;
+      position: fixed;
+      height: 100%;
+      top: 210px;
+      left: 67px;
+      z-index: 9999;
+  }
+  .app_hidden_click2{
+    width: 272px;
+    position: fixed;
+    height: 100%;
+    left: 250px;
+    z-index: 9999;
+  }
+    .app_hidden_click3{
+        width: 100%;
+        position: absolute;
+        height: 165px;
+        left: 520px;
+        z-index: 9999;
+    }
+ 

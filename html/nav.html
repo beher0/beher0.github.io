@@ -14,12 +14,21 @@
 
 <body>
     <div id="app">
-        <div id="myblog_changjingge">
+
+        <div id="myblog_changjingge" v-cloak>
             <input type="checkbox" id="check">
             <label for="check">
                 <i v-show="isShow" class="iconfont  icon-liebiao" aria-hidden="true" id="show"
                     @click="handleShowHide"></i>
                 <i class="iconfont  icon-xiangzuo" aria-hidden="true" id="cancel" @click="handleShowHide"></i>
+                <i v-show="!isShow" aria-hidden="true" id="cancel1"  @click="handleShowHide">
+                    <div class="app_hidden_click">
+                        <div class="app_hidden_click1"></div>
+                        <div class="app_hidden_click2"></div>
+                        <div class="app_hidden_click3"></div>
+                    </div>
+                    
+                </i>
                 <a href="http://www.noti.top/" target="_blank">
                     <i class="iconfont  icon-home" aria-hidden="true" id="cancel_home"></i>
                 </a>
@@ -37,12 +46,14 @@
                         </a>
                     </li>
                 </ul>
+                
             </div>
             <section>
-                <div class="main">
+                <div class="main" v-cloak>
                     <ul>
                         <li>
-                            <h3><span class="iconfont" :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
+                            <h3><span class="iconfont"
+                                    :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
                             <div v-show="navbar[0].name===navbar[currentindex].name">
                                 <!-- 这个是文档查询的子组件 -->
                                 <cpn></cpn>
@@ -196,7 +207,7 @@
                             name: 'HTML5',
                             avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
                             desc: '最新的HTMl5文档查询'
-                        }, ]
+                        },]
                     }, {
                         name: "图床",
                         children: [{
@@ -224,7 +235,7 @@
                             name: 'HTML5',
                             avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
                             desc: '最新的HTMl5文档查询'
-                        }, ]
+                        },]
                     }]
                 }
             }
@@ -235,6 +246,7 @@
             data: {
                 currentindex: 0,
                 isShow: true,
+                isShowContent:true,
                 navbar: [{
                     icon: 'icon-wendang1',
                     name: '文档查询'
