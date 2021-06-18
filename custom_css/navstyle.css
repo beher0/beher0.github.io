@@ -284,12 +284,14 @@
         background: linear-gradient( 90deg, rgba(247, 149, 51, 0.1) 0, rgba(243, 112, 85, 0.1) 15%, rgba(239, 78, 123, 0.1) 30%, rgba(161, 102, 171, 0.1) 44%, rgba(80, 115, 184, 0.1) 58%, rgba(16, 152, 173, 0.1) 72%, rgba(7, 179, 155, 0.1) 86%, rgba(109, 186, 130, 0.1) 100%);
     }
     
-    .cpn li {
+    .cpn li,
+    .www_sun_ul li {
         margin: 20px 20px;
         display: flex;
     }
     
-    .cpn ul {
+    .cpn ul,
+    .www_sun_ul {
         display: flex;
         flex-wrap: wrap;
         justify-content: left;
@@ -355,4 +357,25 @@
     
     .site_self_content_wrap {
         color: #767a76;
+    }
+    
+    .www_sun_ul {
+        display: flex;
+    }
+    
+    .www>ul>li {
+        margin-top: 50px;
+    }
+    
+    .www_title {
+        width: 120px;
+        font-size: 20px;
+        font-weight: 600;
+        height: 40px;
+        border: 1px solid #04a6df;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #04a6df;
     }

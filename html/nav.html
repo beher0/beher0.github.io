@@ -77,29 +77,49 @@
 
     <template id="cpn">
         <div class="cpn">
-            <ul >
+            <ul>
                 <li v-for="item in file" :key="item.id">
                     <a :href="item.url" target="_blank">
                         <div class="cpn_wrap">
                             <!-- logo -->
-                    <div class="cpn_logo">
-                        <img :src="item.avator">
-                    </div>
-                    <!-- 描述性内容 -->
-                    <div class="cpn_content">
-                        <div class="content_title">{{item.name}}</div>
-                        <div class="content_content">{{item.desc}}</div>
-                    </div>
-                    </div>
+                            <div class="cpn_logo">
+                                <img :src="item.avator">
+                            </div>
+                            <!-- 描述性内容 -->
+                            <div class="cpn_content">
+                                <div class="content_title">{{item.name}}</div>
+                                <div class="content_content">{{item.desc}}</div>
+                            </div>
+                        </div>
                     </a>
                 </li>
             </ul>
         </div>
     </template>
     <template id="www">
-        <div>
-            <h2>wwwwwwwwwwwwwwwwwwwwwww</h2>
-            <p>wwwwwwwwwwwwwwwwwwwwwww</p>
+        <div class="www">
+            <ul>
+                <li v-for="(item,index) in www" :key="index">
+                    <div class="www_title">{{item.name}}</div>
+                    <ul class="www_sun_ul">
+                        <li v-for="(child,index) in item.children" :key="index">
+                            <a :href="child.url" target="_blank">
+                                <div class="cpn_wrap">
+                                    <!-- logo -->
+                                    <div class="cpn_logo">
+                                        <img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png">
+                                    </div>
+                                    <!-- 描述性内容 -->
+                                    <div class="cpn_content">
+                                        <div class="content_title">{{child.name}}HTML5</div>
+                                        <div class="content_content">{{child.desc}}最新的HTMl5文档查询</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </template>
 
@@ -111,7 +131,6 @@
             template: '#cpn',
             data() {
                 return {
-                    url: 'noti.tio',
                     file: [{
                         id: 0,
                         url: 'https://developers.weixin.qq.com/miniprogram/dev/framework/',
@@ -147,7 +166,68 @@
             }
         })
         const www = Vue.extend({
-            template: '#www'
+            template: '#www',
+            data() {
+                return {
+                    www: [{
+                        name: "图床",
+                        children: [{
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, ]
+                    }, {
+                        name: "图床",
+                        children: [{
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, {
+                            url: 'https://www.runoob.com/html/html5-intro.html/',
+                            name: 'HTML5',
+                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
+                            desc: '最新的HTMl5文档查询'
+                        }, ]
+                    }]
+                }
+            }
         })
 
         const app = new Vue({
@@ -157,8 +237,7 @@
                 isShow: true,
                 navbar: [{
                     icon: 'icon-wendang1',
-                    name: '文档查询',
-                    children: []
+                    name: '文档查询'
                 }, {
                     icon: 'icon-wangzhan',
                     name: '网站收藏'
