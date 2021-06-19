@@ -46,14 +46,13 @@
                         </a>
                     </li>
                 </ul>
-                
+
             </div>
             <section>
                 <div class="main" v-cloak>
                     <ul>
                         <li>
-                            <h3><span class="iconfont"
-                                    :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
+                            <h3><span class="iconfont" :class=navbar[currentindex].icon></span>{{navbar[currentindex].name}}</h3>
                             <div v-show="navbar[0].name===navbar[currentindex].name">
                                 <!-- 这个是文档查询的子组件 -->
                                 <cpn></cpn>
@@ -98,7 +97,7 @@
                             </div>
                             <!-- 描述性内容 -->
                             <div class="cpn_content">
-                                <div class="content_title">{{item.name}}</div>
+                                <div class="content_title ">{{item.name}}</div>
                                 <div class="content_content">{{item.desc}}</div>
                             </div>
                         </div>
@@ -111,19 +110,19 @@
         <div class="www">
             <ul>
                 <li v-for="(item,index) in www" :key="index">
-                    <div class="www_title">{{item.name}}</div>
+                    <button class="www_title draw">{{item.name}}</button>
                     <ul class="www_sun_ul">
                         <li v-for="(child,index) in item.children" :key="index">
                             <a :href="child.url" target="_blank">
                                 <div class="cpn_wrap">
                                     <!-- logo -->
                                     <div class="cpn_logo">
-                                        <img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png">
+                                        <img :src="child.avator">
                                     </div>
                                     <!-- 描述性内容 -->
                                     <div class="cpn_content">
-                                        <div class="content_title">{{child.name}}HTML5</div>
-                                        <div class="content_content">{{child.desc}}最新的HTMl5文档查询</div>
+                                        <div class="content_title">{{child.name}}</div>
+                                        <div class="content_content">{{child.desc}}</div>
                                     </div>
                                 </div>
                             </a>
@@ -172,7 +171,38 @@
                         name: 'HTML5',
                         avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
                         desc: '最新的HTMl5文档查询'
+                    }, {
+                        id: 5,
+                        url: 'https://www.webpackjs.com/',
+                        name: 'Webpack',
+                        avator: 'https://gitee.com/lovehuating/image/raw/master/webpack.png',
+                        desc: '前端资源模块化管理和打包工具'
+                    }, {
+                        id: 6,
+                        url: 'https://typescript.bootcss.com/',
+                        name: 'Typescript',
+                        avator: 'https://typescript.bootcss.com/images/typescript-icon.svg',
+                        desc: 'TypeScript 是由微软开源的编程语言。它是 JavaScript 的一个超集'
+                    }, {
+                        id: 7,
+                        url: 'https://www.npmjs.cn/',
+                        name: 'npm 中文文档',
+                        avator: 'https://www.npmjs.cn/images/npm.svg',
+                        desc: 'NPM 可以让 JavaScript 开发者在共享代码、复用代码以及更新共享的代码上更加方便。'
+                    }, {
+                        id: 8,
+                        url: 'https://less.bootcss.com/',
+                        name: 'Less',
+                        avator: 'https://gitee.com/lovehuating/image/raw/master/less_logo.png',
+                        desc: 'LESS 为 CSS 赋予了动态语言的特性，如变量、继承、运算、函数'
+                    }, {
+                        id: 8,
+                        url: 'https://www.nodeapp.cn/',
+                        name: 'Node.js',
+                        avator: 'https://gitee.com/lovehuating/image/raw/master/Nodejs.png',
+                        desc: 'Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境'
                     }]
+
                 }
             }
         })
@@ -181,61 +211,43 @@
             data() {
                 return {
                     www: [{
-                        name: "图床",
+                        name: "娱乐",
                         children: [{
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
+                            url: 'http://www.360yy.cn/',
+                            name: 'Vip影院',
+                            avator: 'https://gitee.com/lovehuating/image/raw/master/vipCarmen.png',
+                            desc: '免VIP抢先观看最新电影和电视剧'
                         }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
+                            url: 'http://www.nangua5.com/',
+                            name: '南瓜电影',
+                            avator: 'https://gitee.com/lovehuating/image/raw/master/nagua.png',
+                            desc: '高清电影电视剧在线播放'
                         }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
+                            url: 'http://shoujizhan.cn/',
+                            name: '喝茶影视',
+                            avator: 'https://gitee.com/lovehuating/image/raw/master/logo%20(1).png',
+                            desc: '手机网免费电影'
                         }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
+                            url: 'https://www.pianku.li/',
+                            name: '片库',
+                            avator: 'https://gitee.com/lovehuating/image/raw/master/pianku.png',
+                            desc: '全网高清影视聚合'
                         }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
-                        },]
-                    }, {
-                        name: "图床",
-                        children: [{
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
+                            url: 'https://v.qq.com/',
+                            name: '腾讯视频',
+                            avator: 'https://gitee.com/lovehuating/image/raw/master/%E8%85%BE%E8%AE%AF%E8%A7%86%E9%A2%91-01.png',
+                            desc: '中国领先的在线视频媒体平台,海量影视'
                         }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
+                            url: 'https://www.iqiyi.com/',
+                            name: '爱奇艺',
+                            avator: 'https://gitee.com/lovehuating/image/raw/master/%E7%88%B1%E5%A5%87%E8%89%BA-01.png',
+                            desc: '海量正版高清视频'
                         }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
-                        }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
-                        }, {
-                            url: 'https://www.runoob.com/html/html5-intro.html/',
-                            name: 'HTML5',
-                            avator: 'https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//6465.png',
-                            desc: '最新的HTMl5文档查询'
-                        },]
+                            url: 'https://www.bilibili.com/',
+                            name: '哔哩哔哩',
+                            avator: 'https://gitee.com/lovehuating/image/raw/master/bili.png',
+                            desc: '哔哩哔哩~二次元'
+                        }]
                     }]
                 }
             }
@@ -246,7 +258,7 @@
             data: {
                 currentindex: 0,
                 isShow: true,
-                isShowContent:true,
+                isShowContent: true,
                 navbar: [{
                     icon: 'icon-wendang1',
                     name: '文档查询'
