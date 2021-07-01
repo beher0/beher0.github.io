@@ -39,6 +39,39 @@
 	/** 隐藏超出的内容 **/
 }
 
+
+
+.sl_jingxuan{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-around;
+}
+
+
+.sl_img{
+	/* flex: 1; */
+	/* margin: 20px 10px; */
+	width: 31%;
+}
+.sl_img>img{
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+	padding: 3px 3px;
+}
+.sl_img>img:hover{
+	border: 1px solid #337ab7;
+}
+.sl_img p{
+	line-height: 20px;
+	position: relative;
+	top: -15px;
+}
+.sl_img div{
+	cursor: pointer;
+}
+
+
 /* SimpleLife网站收藏 */
 
 
