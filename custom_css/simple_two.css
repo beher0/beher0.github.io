@@ -26,6 +26,10 @@ a:hover {
     font-weight: 700;
 }
 
+[v-cloak] {
+    display: none;
+}
+
 .sl_header .sl_logo a {
     text-decoration: none;
     color: #000;
