@@ -67,7 +67,6 @@
                             </div>
 
                         </li>
-
                     </ul>
                 </div>
             </section>
@@ -88,7 +87,7 @@
     <template id="cpn">
         <div class="cpn">
             <ul>
-                <li v-for="item in file" :key="item.id">
+                <li v-for="(item,index) in file" :key="index">
                     <a :href="item.url" target="_blank">
                         <div class="cpn_wrap">
                             <!-- logo -->
@@ -97,8 +96,8 @@
                             </div>
                             <!-- 描述性内容 -->
                             <div class="cpn_content">
-                                <div class="content_title ">{{item.name}}</div>
-                                <div class="content_content">{{item.desc}}</div>
+                                <div class="content_title sl_ItmeColor">{{item.name}}</div>
+                                <div  class="content_content sl_ItmeColor">{{item.desc}}</div>
                             </div>
                         </div>
                     </a>
@@ -204,7 +203,7 @@
                     }]
 
                 }
-            }
+            },
         })
         const www = Vue.extend({
             template: '#www',

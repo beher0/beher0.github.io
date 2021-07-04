@@ -306,7 +306,12 @@
         margin-top: -10px;
         transition: all 0.8s;
         background-color: #04a6df;
-        color: #fff;
+        color: #fff !important;
+        font-style: 50px;
+    }
+    
+    .cpn_wrap:hover .sl_ItmeColor {
+        color: #fff !important;
     }
     
     .cpn_wrap .cpn_logo img {
@@ -329,7 +334,8 @@
         margin-left: -20px;
     }
     
-    .cpn_logo img:hover {
+    .cpn_logo img:hover,
+    .cpn_wrap:hover img {
         transform: rotateZ(360deg);
         transition: all 0.5s
     }
