@@ -61,7 +61,7 @@
                             这些项目或者是对Bootstrap进行了有益的补充，或者是基于Bootstrap开发的
                         </p>
                     </div>
-                    <div class="sl_items">
+                    <div class="sl_items" v-cloak>
                         <div class="row">
                             <div v-for="(item,index) in items" :key={index}>
                                 <div id="sl_item" class="col-md-3 col-sm-5 col-xs-5 sl_col-sm-push-1 sl_col-xs-push-1">
@@ -83,7 +83,7 @@
             <aside>
                 <transition name="slide-fade">
                     <div id="sl_top" v-show="isTop">
-                        <a href="#" class="text-center" title="回到顶部">
+                        <a class="text-center" title="回到顶部" @click="handleTop()">
                             <span class="glyphicon glyphicon-plane"></span>
                         </a>
                     </div>
@@ -667,6 +667,16 @@
                     } else {
                         this.isTop = false
                     }
+                },
+                handleTop() {
+                    let top = this.scroll
+                    const timeTop = setInterval(() => {
+                        document.body.scrollTop = document.documentElement.scrollTop = top -= 50
+                        if (top <= 0) {
+                            clearInterval(timeTop)
+                        }
+                    }, 5)
+
                 }
             }
         })
