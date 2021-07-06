@@ -30,9 +30,7 @@
                         <!-- 导航 -->
                         <div class="sl_nav">
                             <ul class="nav nav-tabs">
-                                <li role="presentation" class="active"><a href="#">Bootstrap</a></li>
-                                <li role="presentation"><a href="#">Profile</a></li>
-                                <li role="presentation"><a href="#">Messages</a></li>
+                                <li role="presentation" :class="{'active':item.isActive}" v-for="(item,index) for navList" :key="index"><a :href=item.url>{{item.name}}</a></li>
                             </ul>
                         </div>
 
@@ -43,9 +41,7 @@
             <article>
                 <!-- 在768px下的导航条，点击按钮才过渡出现 -->
                 <ul class="sl_special_nav">
-                    <li role="presentation" class="active"><a href="#">Bootstrap</a></li>
-                    <li role="presentation"><a href="#">Profile</a></li>
-                    <li role="presentation"><a href="#">Messages</a></li>
+                    <li role="presentation" :class="{'active':item.isActive}" v-for="(item,index) for navList" :key="index"><a :href=item.url>{{item.name}}</a></li>
                 </ul>
             </article>
 
@@ -105,6 +101,19 @@
             el: '#app',
             data() {
                 return {
+                    navList: [{
+                        url: '',
+                        name: 'Bootstrap',
+                        isActive: true
+                    }, {
+                        url: '',
+                        name: 'Profile',
+                        isActive: false
+                    }, {
+                        url: '',
+                        name: 'Messages',
+                        isActive: false
+                    }],
                     isTop: false,
                     scroll: '',
                     isNavShow: false,
