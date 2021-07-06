@@ -30,7 +30,9 @@
                         <!-- 导航 -->
                         <div class="sl_nav">
                             <ul class="nav nav-tabs">
-                                <li role="presentation" :class="{'active':item.isActive}" v-for="(item,index) for navList" :key="index"><a :href=item.url>{{item.name}}</a></li>
+                                <li role="presentation" :class="{'active':item.isActive}" @click="navListActive(index)" v-for="(item,index) in navList" :key={index}>
+                                    <a>{{item.name}}</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -41,7 +43,9 @@
             <article>
                 <!-- 在768px下的导航条，点击按钮才过渡出现 -->
                 <ul class="sl_special_nav">
-                    <li role="presentation" :class="{'active':item.isActive}" v-for="(item,index) for navList" :key="index"><a :href=item.url>{{item.name}}</a></li>
+                    <li role="presentation" :class="{'active':item.isActive}" @click="navListActive(index)" v-for="(item,index) in navList" :key={index}>
+                        <a>{{item.name}}</a>
+                    </li>
                 </ul>
             </article>
 
@@ -664,6 +668,14 @@
                 window.addEventListener('scroll', this.menu)
             },
             methods: {
+                navListActive(index) {
+                    this.navList.forEach((value, i) => {
+                        value.isActive = false
+                        if (i == index) {
+                            value.isActive = true
+                        }
+                    });
+                },
                 tapDropmenu() {
                     this.isNavShow = !this.isNavShow;
                     console.log(this.isNavShow)
