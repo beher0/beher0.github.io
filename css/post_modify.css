@@ -73,8 +73,8 @@
 /* 评论区背景图 */
 .veditor {
 	background-image: url('https://gitee.com/lovehuating/image/raw/master/coments.png') !important;
-	background-position: right bottom;
-	background-repeat: no-repeat;
+	background-position: right bottom !important;
+	background-repeat: no-repeat !important;
 }
 
 /* 评论区背景图 */
