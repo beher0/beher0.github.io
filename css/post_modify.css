@@ -4,6 +4,80 @@
 	text-align: center;
 }
 
+/* CSS3文章 */
+#CSS3_round,
+#CSS3_stretch {
+	border: 15px solid transparent;
+	width: 250px;
+	padding: 10px 20px;
+}
+
+.sl_CSS3 {
+	display: flex;
+	justify-content: space-around;
+}
+
+
+#CSS3_round {
+	-webkit-border-image: url('https://www.runoob.com/images/border.png') 30 30 round;
+	/* Safari 5 and older */
+	-o-border-image: url('https://www.runoob.com/images/border.png') 30 30 round;
+	/* Opera */
+	border-image: url('https://www.runoob.com/images/border.png') 30 30 round;
+}
+
+#CSS3_stretch {
+	-webkit-border-image: url('https://www.runoob.com/images/border.png') 30 30 stretch;
+	/* Safari 5 and older */
+	-o-border-image: url('https://www.runoob.com/images/border.png') 30 30 stretch;
+	/* Opera */
+	border-image: url('https://www.runoob.com/images/border.png') 30 30 stretch;
+}
+
+#CSS_shadow {
+	text-shadow: 5px 5px 5px #ff0000;
+	font-size: 25px;
+}
+#myfirst {
+    animation: myfirst 4s;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+		background: blue;
+		color: #FFFFFF;
+}
+        
+@keyframes myfirst {
+    0% {
+        background: blue;
+    }
+    25% {
+        background: yellow;
+        transform: rotate(360deg);
+        transition: all 1s;
+        margin-left: 400px;
+    }
+    50% {
+        background: red;
+    }
+    100% {
+        background: chocolate;
+    }
+}
+
+/* CSS3文章 */
+
+/* 评论区背景图 */
+.veditor {
+	background-image: url('https://gitee.com/lovehuating/image/raw/master/coments.png') !important;
+	background-position: right bottom;
+	background-repeat: no-repeat;
+}
+
+/* 评论区背景图 */
 /* post文章样式 */
 .downBtn {
 	border-radius: 5px;
@@ -17,7 +91,7 @@
 	border: 1px solid #563d7c;
 }
 
-.downBtn:hover{
+.downBtn:hover {
 	background-color: #563d7c;
 	color: #FFFFFF;
 	cursor: pointer;
@@ -41,7 +115,7 @@
 
 
 
-.sl_jingxuan{
+.sl_jingxuan {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
@@ -49,25 +123,29 @@
 }
 
 
-.sl_img{
+.sl_img {
 	/* flex: 1; */
 	/* margin: 20px 10px; */
 	width: 31%;
 }
-.sl_img>img{
+
+.sl_img>img {
 	border: 1px solid #dddddd;
 	border-radius: 5px;
 	padding: 3px 3px;
 }
-.sl_img>img:hover{
+
+.sl_img>img:hover {
 	border: 1px solid #337ab7;
 }
-.sl_img p{
+
+.sl_img p {
 	line-height: 20px;
 	position: relative;
 	top: -15px;
 }
-.sl_img div{
+
+.sl_img div {
 	cursor: pointer;
 }
 
