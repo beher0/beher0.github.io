@@ -1,8 +1,8 @@
 /* 自定义侧边栏图标 */
 .icon-weixin,.icon-bilibili-fill{
+	display: inline-block;
 	font-size: 23px;
 }
-
 /* 清单 */
 .icon-zhaopian1{
 	font-size: 14px
@@ -11,7 +11,6 @@
 .icon-zhiding1,.icon-leimu2{
 	font-size: 14px
 }
-
 
 /* 颜色图标 */
 .icon-icon-{
