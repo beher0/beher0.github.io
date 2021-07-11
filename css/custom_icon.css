@@ -3,6 +3,18 @@
 	display: inline-block;
 	font-size: 23px;
 }
+.icon-weixin{
+	color: #09bb07;
+}
+.icon-bilibili-fill{
+	color: #0cb6f2;
+}
+.fa-github{
+	color: black;
+}
+.fa-envelope{
+	color: #f29600;
+}
 /* 清单 */
 .icon-zhaopian1{
 	font-size: 14px
