@@ -4,6 +4,7 @@ a[href *= "weixin.jpg"] i::after{
 	content: ''; 
 	display: flex;
 	opacity: 0;
+	visibility:hidden;
 	justify-content: center;
 	align-items: center;
 	width: 150px;
@@ -14,7 +15,7 @@ a[href *= "weixin.jpg"] i::after{
 	bottom: 120px;
 	background-repeat: no-repeat;
 	background-position:center;
-	background-image: url('https://gitee.com/lovehuating/image/raw/master/wechat_aside.jpg');
+	background-image: url('https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//wechat_aside.jpg');
 	background-size: auto 140px;
 	background-color:rgb(252 252 252);
 	overflow: hidden;
@@ -24,8 +25,9 @@ a[href *= "weixin.jpg"] i::after{
 a[href *= "weixin.jpg"]:hover i::after{
 	opacity: 1;
 	bottom: 100px;
-	transition: opacity 1s;
-	transition: bottom 1.5s;
+	visibility: visible;
+	transition: all 1s linear;
+	/* transition: bottom 1.5s; */
 }
 
 
