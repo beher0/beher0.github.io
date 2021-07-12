@@ -20,7 +20,7 @@ a[href *= "weixin.jpg"] i::after{
 	background-color:rgb(252 252 252);
 	overflow: hidden;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-	border-radius: 5px;
+	border-radius: 3px;
 }
 a[href *= "weixin.jpg"]:hover i::after{
 	opacity: 1;
