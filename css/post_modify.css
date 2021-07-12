@@ -36,7 +36,80 @@ a[href *= "weixin.jpg"]:hover i::after{
 #post-info {
 	text-align: center;
 }
+/* tabBar文章 */
+@media screen and  (max-width: 768px) {
+	.icon-home,.icon-categories,.icon-goshopping,.icon-profile{
+		font-size: 20px !important;
+	}
+	.copyBtn{
+		right: -37% !important;
+		opacity: 0.4;
+	}
+}
+@media screen and  (max-width: 414px) {
+	.copyBtn{
+		right: -23% !important;
+	}
+	
+}
+@media screen and  (min-width: 769px){
+	.icon-home,.icon-categories,.icon-goshopping,.icon-profile{
+		font-size: 40px !important;
+	}
+	
+}
+#copy_content{
+	position: fixed;top: 0;left: 0;opacity: 0;z-index: -10;
+}
 
+#sl-tabBar{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sl-tabBar-item:hover{
+	border: 1px solid #428bca;
+	border-radius: 10px;
+	transition: border 1s;
+}
+.sl-tabBar-item span{
+	margin-top: -30px;
+}
+.sl-tabBar-item:hover .copyBtn{
+	visibility:visible;
+	opacity: 1;
+	transition: all 1s linear;
+}
+.copyBtn{
+	opacity: 0;
+	visibility: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 1px;
+	color: white;
+	border-width: 700;
+	width: 50px;
+	height: 25px;
+	position: relative;
+	top: 0;
+	right: -38%;
+	background-color: #428bca;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+.sl-tabBar-item{
+	border: 1px solid #f8f5f9;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.sl-tabBar-item-text{
+	text-align: center;
+	line-height: 20px;
+}
 /* CSS3文章 */
 #CSS3_round,
 #CSS3_stretch {
