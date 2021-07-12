@@ -1,7 +1,7 @@
 /* 自定义侧边栏图标 */
 .icon-weixin,.icon-bilibili-fill{
 	display: inline-block;
-	font-size: 23px;
+	font-size: 23px !important;
 }
 .icon-weixin{
 	transform: rotate(0deg) !important;

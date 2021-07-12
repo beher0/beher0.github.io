@@ -99,7 +99,7 @@ a[href *= "weixin.jpg"]:hover i::after{
 	border-bottom-left-radius: 10px;
 }
 .sl-tabBar-item{
-	border: 1px solid #f8f5f9;
+	border: 1px solid rgba(0,0,0,0);
 	flex: 1;
 	display: flex;
 	justify-content: center;
