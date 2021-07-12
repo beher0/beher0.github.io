@@ -4,6 +4,9 @@
 	font-size: 23px;
 }
 .icon-weixin{
+	transform: rotate(0deg) !important;
+}
+.icon-weixin{
 	color: #09bb07;
 }
 .icon-bilibili-fill{
