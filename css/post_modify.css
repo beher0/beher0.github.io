@@ -1,3 +1,13 @@
+/* hr下线 */
+/* <div class="sl-hr"></div> 制作的一个简单的下划线，用于隔离小标题内容 */
+.sl-hr{
+	border-bottom: 5px solid #80c8f8;
+	height: 2px;
+	margin-bottom: 20px;
+}
+/* ********************************************************************* */
+
+
 /* 侧边栏微信图标，显示图片提示 */
 
 a[href *= "weixin.jpg"] i::after{
@@ -29,6 +39,7 @@ a[href *= "weixin.jpg"]:hover i::after{
 	transition: all 1s linear;
 	/* transition: bottom 1.5s; */
 }
+
 
 
 /* post-info是文章的标题，当top_img=false时 */

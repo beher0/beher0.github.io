@@ -1,33 +1,59 @@
+/* 顶部导航图标，hover状态下，统一颜色跟下划线 */
+.site-page:hover .fa-search,
+.site-page:hover .fa-bars,
+.site-page:hover .fa-home,
+.site-page:hover .icon-zhiding1, 
+.site-page:hover .icon-leimu2,
+.site-page:hover .fa-heartbeat,
+.site-page:hover .icon-liuyanban-05,
+.site-page:hover .icon-zhanku
+{
+	color: #80c8f8;
+}
+#site-name:hover{
+	color: #80c8f8 !important;
+}
+
+
 /* 自定义侧边栏图标 */
-.icon-weixin,.icon-bilibili-fill{
+.icon-weixin,
+.icon-bilibili-fill {
 	display: inline-block;
 	font-size: 23px !important;
 }
-.icon-weixin{
+
+.icon-weixin {
 	transform: rotate(0deg) !important;
 }
-.icon-weixin{
+
+.icon-weixin {
 	color: #09bb07;
 }
-.icon-bilibili-fill{
-	color: #0cb6f2;
+
+.icon-bilibili-fill {
+	color: #fb7299;
 }
-.social-icon .fa-github{
+
+.social-icon .fa-github {
 	color: black;
 }
-.fa-envelope{
-	color: #f29600;
+
+.fa-envelope {
+	color: #0cb6f2;
 }
+
 /* 清单 */
-.icon-zhaopian1{
+.icon-zhaopian1 {
 	font-size: 14px
 }
+
 /* 顶部导航条 */
-.icon-zhiding1,.icon-leimu2{
+.icon-zhiding1,
+.icon-leimu2 {
 	font-size: 14px
 }
 
 /* 颜色图标 */
-.icon-icon-{
+.icon-icon- {
 	color: red;
 }
