@@ -1,3 +1,31 @@
+/* 技术栈图标 */
+.icon-unchecked,.icon-box{
+	font-size: 25px;
+	color: #767a76;
+}
+.icon-box-isActive{
+	color: #3c8ede !important;
+}
+
+.sl-stack{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.sl-check{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sl-title-text-isActive{
+	color: #3c8ede;
+}
+.sl-title-common{
+	font-weight: 700;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
 /* 顶部导航图标，hover状态下，统一颜色跟下划线 */
 .site-page:hover .fa-search,
 .site-page:hover .fa-bars,
