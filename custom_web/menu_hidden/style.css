@@ -1,0 +1,162 @@
+body{
+	background-color: #767a76;
+}
+#simplelife{
+	font-size: 15rem;
+	color: #FFFFFF;
+	position: fixed;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none !important;
+    list-style: none !important;
+}
+
+.iconfont {
+    font-size: 35px;
+    color: #fff;
+}
+
+main {
+    overflow: hidden;
+    width: 15px;
+    background-color: #000;
+    height: 600px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main li {
+    opacity: 0;
+    visibility: hidden;
+}
+
+main .icon {
+    width: 0;
+}
+
+main .icon .icon-center {
+    width: 0;
+}
+
+main::before {
+    content: " ";
+    width: 10px;
+    height: 600px;
+    background-color: #23aaf2;
+    position: absolute;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    left: 0;
+}
+
+main:hover:before {
+    width: 20px;
+    border-radius: 0;
+}
+
+main:hover {
+    width: 90px;
+    transition: 0.3s linear;
+}
+
+main:hover li {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s linear;
+    position: relative;
+    z-index: 999;
+}
+
+main:hover .icon {
+    position: absolute;
+    width: 40px;
+    height: 135px;
+    left: 20px;
+    top: 83px;
+    background-color: #23aaf2;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: all 0.4s;
+}
+
+main:hover .icon .icon-top,
+main:hover .icon .icon-center,
+main:hover .icon .icon-bottom {
+    flex: 1;
+}
+
+main:hover .icon .icon-top {
+    border-bottom-left-radius: 15px;
+}
+
+main:hover .icon .icon-bottom {
+    border-top-left-radius: 15px;
+}
+
+main:hover .icon .icon-top,
+main:hover .icon .icon-bottom {
+    background-color: #000;
+}
+
+main:hover .icon .icon-center {
+    background-color: #23aaf2;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 55px;
+    transition: width 0.3s;
+}
+
+li:nth-child(1):hover~.icon {
+    top: 83;
+    transition: top 0.2s;
+}
+
+li:nth-child(2):hover~.icon {
+    top: 133px;
+    transition: top 0.2s;
+}
+
+li:nth-child(3):hover~.icon {
+    top: 183px;
+    transition: top 0.2s;
+}
+
+li:nth-child(4):hover~.icon {
+    top: 233px;
+    transition: top 0.2s;
+}
+
+li:nth-child(5):hover~.icon {
+    top: 283px;
+    transition: top 0.2s;
+}
+
+li:nth-child(6):hover~.icon {
+    top: 333px;
+    transition: top 0.2s;
+}
+
+li:nth-child(7):hover~.icon {
+    top: 383px;
+    transition: top 0.2s;
+}
