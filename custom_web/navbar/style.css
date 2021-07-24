@@ -106,7 +106,7 @@ base-flex {
   visibility: hidden;
   opacity: 0;
   transform: rotate3d(0, 1, 0, 180deg) !important;
-  transition: all 0.8s linear !important;
+  transition: all 0.7s linear !important;
 }
 .container .nav .active button .line {
   transition: transform 0.7 linear !important;
