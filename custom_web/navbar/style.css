@@ -1,0 +1,119 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+base-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+:root {
+  --themeColor: #5290f9;
+}
+.container .top {
+  background-color: #eafbff;
+}
+.container .bottom {
+  background-color: var(--themeColor);
+}
+.container .base-h {
+  width: 100vw;
+  height: 50vh;
+}
+.container .nav {
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .nav #nav-group {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  overflow: hidden;
+}
+.container .nav #nav-group ul {
+  width: 320px;
+  display: flex;
+  transition: width 0.7s;
+}
+.container .nav #nav-group ul li {
+  margin: 0 10px;
+  transform: rotateY(0deg);
+  transition: transform 0.6s linear, opacity 0.6s linear;
+  margin-left: 20px;
+}
+.container .nav #nav-group ul li a {
+  color: #313131;
+}
+.container .nav #nav-group ul li ::after {
+  content: " ";
+  position: absolute;
+  margin-top: 23px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  border-bottom: 4px solid var(--themeColor);
+}
+.container .nav #nav-group ul li:hover ::after {
+  content: "";
+  width: 100%;
+  transition: width 0.3s linear;
+}
+.container .nav #nav-group button {
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 0 30px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.container .nav #nav-group button .line {
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--themeColor);
+  width: 17px;
+  background-color: var(--themeColor);
+  position: absolute;
+  transition: transform 0.6s linear;
+}
+.container .nav #nav-group button .line1 {
+  transform: rotate(45deg);
+}
+.container .nav #nav-group button .line2 {
+  transform: rotate(-45deg);
+}
+.container .nav .active ul {
+  width: 0 !important;
+  transition: width 0.7s;
+}
+.container .nav .active ul li {
+  visibility: hidden;
+  opacity: 0;
+  transform: rotate3d(0, 1, 0, 180deg) !important;
+  transition: all 0.8s linear !important;
+}
+.container .nav .active button .line {
+  transition: transform 0.7 linear !important;
+}
+.container .nav .active button .line1 {
+  transform: rotate(360deg) translateY(5.5px) !important;
+}
+.container .nav .active button .line2 {
+  transform: rotate(-720deg) translateY(-5.5px) !important;
+}
