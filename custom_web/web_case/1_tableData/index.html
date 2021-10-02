@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态表格数据案例</title>
+  <style>
+    table{
+      border-collapse: collapse;
+      width: 500px;
+      margin: 100px auto;
+      text-align: center;
+    }
+    th,td{
+      border: 1px solid #333;
+      width: 200px;
+    }
+    thead tr{
+      height: 40px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+    <table cellspacing="0"> 
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>科目</th>
+          <th>成绩</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+    <script>
+      // 数据
+      var data = [{
+        name: '李四',
+        subject: 'javascript',
+        score: 98
+      },
+      {
+        name: '张三',
+        subject: 'javascript',
+        score: 90
+      },
+      {
+        name: '老刘',
+        subject: 'javascript',
+        score: 92
+      },
+      {
+        name: '李逵',
+        subject: 'javascript',
+        score: 45
+      }]
+      // 获取 tbody 元素
+      var tbody = document.querySelector('tbody')
+      data.forEach( obj => { // 循环 data 数组 obj 是单个对象
+        var tr = document.createElement('tr') //创建tr 对象
+        tbody.appendChild(tr) // 添加到 body 里面
+        for(var i in obj){ // 再次遍历对象 obj
+          var td = document.createElement('td') //创建td
+          td.innerHTML = obj[i]
+          tr.appendChild(td) // 插入到 tr里面
+        }
+        // 添加删除单元格
+        var td = document.createElement('td')
+        td.innerHTML = '<a href="javascript:;">删除</a>'
+        tr.appendChild(td)
+      });
+      // 获取所有的 a 标签
+      var a = document.querySelectorAll('a')
+      for(var i=0;i<a.length;i++){
+        a[i].onclick = function(){
+          tbody.removeChild(this.parentNode.parentNode)
+        }
+      }
+    </script>
+</body>
+</html>

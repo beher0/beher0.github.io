@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动画案例封装</title>
+    <script src="../js/animate.js"></script>
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        position: relative;
+      }
+      code{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 500px;
+      }
+      pre{
+        justify-content: center;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <button>点击</button>
+     <code>
+      <pre>
+        function animate(obj,target,callback){
+          // 清除一下原先的定时器，防止叠加定时器
+          clearInterval(obj.timer)
+          obj.timer = setInterval(function(){
+          var step = (target - obj.offsetLeft) / 10
+          step = step > 0?Math.ceil(step):Math.floor(step)
+            
+            if(step >=0 && obj.offsetLeft>=target){
+              clearTimer(obj.timer,callback)
+            } else if(step <= 0 && obj.offsetLeft<=target){
+              clearTimer(obj.timer,callback)
+            }
+            obj.style.left = obj.offsetLeft + step + 'px';
+          },15)
+        }
+      
+        function clearTimer(timer,callback){
+          clearInterval(timer)
+          // 添加定时器
+          if(callback){
+            callback(); // 当传入了回调函数 callback 就调用
+          }
+        }
+      </pre>
+     </code>
+    <script>
+      var div = document.querySelector("div");
+      var button = document.querySelector("button");
+      button.addEventListener("click", function () {
+        animate(div, 400, function () {
+          // alert("完成");
+        });
+      });
+    </script>
+  </body>
+</html>

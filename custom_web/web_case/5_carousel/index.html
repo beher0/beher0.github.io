@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播图案例</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        position: relative;
+        width: 500px;
+        height: 300px;
+        margin: 50px auto;
+        overflow: hidden;
+      }
+      .image-ul {
+        position: absolute;
+        width: 3000px;
+        list-style: none;
+        left: 0;
+      }
+      .image-ul li {
+        float: left;
+      }
+      .image-ul li img {
+        width: 500px;
+        height: 300px;
+      }
+      .icon {
+        list-style: none;
+        position: absolute;
+        width: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        height: 40px;
+      }
+      .icon li {
+        float: left;
+        width: 40px;
+        height: 10px;
+        border-radius: 8px;
+        background-color: #fff;
+        margin: 0 2px;
+        opacity: 0.3;
+        cursor: pointer;
+      }
+      .btn-left-right {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: inherit;
+        height: 100px;
+        top: 100px;
+        align-items: center;
+      }
+      .btn-left-right img {
+        display: none;
+        width: 50px;
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      /* .btn-left-right::last-child{
+      transform: rotate(180deg);
+    } */
+      .btn-left-right img:nth-child(2) {
+        transform: rotate(180deg);
+      }
+      .btn-left-right img:hover {
+        opacity: 1;
+      }
+      .icon .current {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="image-ul">
+        <li><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//20210516215941.png" alt="" /></li>
+        <li><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//Technology_Stack.jpg" alt="" /></li>
+        <li><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//Vue.jpg" alt="" /></li>
+        <li><img src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//web.jpg" alt="" /></li>
+        <li><img src="https://gitee.com/lovehuating/image/raw/master/boostrap_cover.png" alt="" /></li>
+        <li><img src="https://gitee.com/lovehuating/image/raw/master/Js_Dom.jpg" alt="" /></li>
+      </ul>
+      <ol class="icon"></ol>
+      <div class="btn-left-right">
+        <img
+          src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//left.png"
+          alt=""
+        />
+        <img
+          src="https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//left.png"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <script src="../js/animate.js"></script>
+    <script>
+      var container = document.querySelector(".container");
+      var imageUl = document.querySelector(".image-ul");
+      var iconOl = document.querySelector(".icon");
+      //定义变量和常量
+      const fixedValue = 500;
+      var num = 0;
+
+      // 轮播图定时器
+      var swaperTimer = "";
+      // for 循环生成 li
+      for (var i = 0; i < imageUl.children.length; i++) {
+        var li = document.createElement("li");
+        li.setAttribute("data-index", i);
+        li.addEventListener("click", function () {
+          var index = this.getAttribute("data-index");
+          num = -index;
+          appointImage(num);
+          clearClassName(index);
+          clearSwaperTimer();
+        });
+        iconOl.appendChild(li);
+      }
+
+      // 选中所有 iconOl 下的li标签
+      var iconLi = iconOl.querySelectorAll("li");
+      // 清除 li 标签 classname
+      function clearClassName(index) {
+        for (var i = 0; i < iconLi.length; i++) {
+          iconLi[i].className = "";
+        }
+        iconLi[index].className = "current";
+      }
+
+      // 显示隐藏 切换按钮
+      // 左右切换按钮
+      var btn_left_right = document.querySelectorAll(".btn-left-right img");
+      container.addEventListener("mouseenter", function () {
+        btn_left_right[0].style.display = "block";
+        btn_left_right[1].style.display = "block";
+      });
+      container.addEventListener("mouseleave", function () {
+        btn_left_right[0].style.display = "none";
+        btn_left_right[1].style.display = "none";
+      });
+
+      clearClassName(-num);
+      btn_left_right[0].addEventListener("click", function () {
+        ++num;
+        if (num === 1) {
+          num = -imageUl.children.length + 1;
+        }
+        animate(imageUl, fixedValue * num);
+        clearClassName(-num);
+        clearSwaperTimer();
+      });
+
+      btn_left_right[1].addEventListener("click", nextImage);
+      function nextImage() {
+        --num;
+        if (num === -imageUl.children.length) {
+          num = 0;
+        }
+        animate(imageUl, fixedValue * num);
+        clearClassName(-num);
+        if (this.src) {
+          clearSwaperTimer();
+        }
+      }
+
+      // 指定图片跳转
+      function appointImage(num) {
+        animate(imageUl, fixedValue * num);
+      }
+
+      // 设置定时器 下一张
+      swaperTimer = setInterval(nextImage, 3000);
+
+      function clearSwaperTimer(){
+        clearInterval(swaperTimer);
+        swaperTimer = setInterval(nextImage, 3000);
+      }
+    </script>
+  </body>
+</html>

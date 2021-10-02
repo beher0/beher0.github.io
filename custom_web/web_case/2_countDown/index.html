@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>倒计时案例</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        width: 25px;
+        height: 25px;
+        background-color: #000;
+        margin: 2px;
+        float: left;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      ul {
+        list-style: none;
+       
+      }
+      ul li{
+        width: 100px;
+        height: 100px;
+        font-size: 50px;
+        display: flex;
+        flex-direction: column;
+      }
+      ul li:nth-child(1)::after{
+        content: '日';
+        font-size: 14px;
+      }
+      ul li:nth-child(2)::after{
+        content: '时';
+        font-size: 14px;
+      }
+      ul li:nth-child(3)::after{
+        content: '分';
+        font-size: 14px;
+      }
+      ul li:nth-child(4)::after{
+        content: '秒';
+        font-size: 14px;
+      }
+      .container{
+        width: 500px;
+        height: 500px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .input_time{
+        width: 400px;
+        height: 200px;
+        position: absolute;
+        background-color: pink;
+        top: 0;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+      }
+      .input_time input, .input_time button{
+        width: 50px;
+        height: 30px;
+        margin: 5px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="input_time">
+        年<input type="text" value="2021" data-index="1">
+        月<input type="text" value='10' data-index="2">
+        日<input type="text" value='2' data-index="3">
+        时<input type="text" data-index="4">
+        分<input type="text" data-index="5">
+        <button class="btn">确认</button>
+      </div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+
+      var lis = document.querySelectorAll("ul>li");
+      var btn = document.querySelector('.btn');
+      var input = document.querySelector('.input_time');
+      var inputTime = ''
+      btn.addEventListener('click',function(){
+        var year = input.children[0].value || 0;
+        var mouth = input.children[1].value || 0;
+        var day = input.children[2].value || 0;
+        var hour = input.children[3].value || 0;
+        var min = input.children[4].value || 0;
+        
+        inputTime = +new Date(`${year}-${mouth}-${day} ${hour}:${min}`); // 输入时间是时间戳
+        countDown();
+        console.log(year);
+        console.log(mouth);
+        console.log(day);
+      })
+      function countDown() {
+        var newTime = +new Date(); // 当前时间的时间戳
+        var times = (inputTime - newTime) / 1000; // 时间差 秒
+        var d = parseInt(times / 60 / 60 / 24);
+        var h = parseInt((times / 60 / 60) % 24);
+        var m = parseInt((times / 60) % 60);
+        var s = parseInt(times % 60);
+        if (times >= 0) {
+          d = d < 10 ? "0" + d : d;
+          h = h < 10 ? "0" + h : h;
+          m = m < 10 ? "0" + m : m;
+          s = s < 10 ? "0" + s : s;
+        } else {
+          d = 0;
+          h = 0;
+          m = 0;
+          s = 0;
+        }
+        lis[0].innerHTML = d;
+        lis[1].innerHTML = h;
+        lis[2].innerHTML = m;
+        lis[3].innerHTML = s;
+      }
+      
+      setInterval(countDown, 1000);
+    </script>
+  </body>
+</html>
