@@ -16,3 +16,39 @@
 //   });
 // }
 // mouseRouser();
+
+
+
+/**
+ * 侧边栏
+ */
+
+  var slDiv = document.createElement('div')
+  slDiv.innerHTML = `<div class="sl-aside-container">
+  <div class="sl-item sl-item-show">
+    <a href="#">
+    <span class="iconfont icon-zhanku"></span>
+    <span>用户</span>
+    </a>
+  </div>
+  <div class="sl-item sl-item-show">
+    <a href="#">
+    <span class="iconfont icon-zhanku"></span>
+    <span>用户</span>
+    </a>
+  </div>
+  <div class="sl-item sl-item-show">
+    <a href="#">
+    <span class="iconfont icon-zhanku"></span>
+    <span>用户</span>
+    </a>
+  </div>
+  <div class="sl-item sl-item-show">
+    <a href="#">
+    <span class="iconfont icon-zhanku"></span>
+    <span>用户</span>
+    </a>
+  </div>
+    </div>`
+
+  document.body.appendChild(slDiv)

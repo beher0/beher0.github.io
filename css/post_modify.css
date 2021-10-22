@@ -1,20 +1,92 @@
+/* 用于侧边栏样式 */
+
+.sl-aside-container {
+	z-index: 99999;
+	position: fixed;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 5px;
+	height: 350px;
+	background-color: pink;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom-right-radius: 15px;
+	border-top-right-radius: 15px;
+	overflow: hidden;
+	transition: width .2s linear;
+	display: flex;
+	flex-direction: column;
+	/* background: url('https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//bgslaside.jpg'); */
+	/* background-size: cover; */
+	background-image: linear-gradient(to right, #fef4ea, #f0f8f3);
+
+}
+
+.sl-aside-container:hover {
+	width: 80px;
+}
+
+.sl-item {
+	height: 60px;
+	position: relative;
+	margin: 5px 0;
+	min-width: 40px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .3s linear;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sl-aside-container:hover .sl-item-show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.sl-item a {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: #767A76;
+}
+.sl-item a span:nth-child(2){
+	margin-top: -12px;
+}
+.sl-item a:hover {
+	color: #00c4b6;
+}
+
+.sl-item a .iconfont {
+	font-size: 24px;
+}
+
+
+
+
+
 /* hr下线 */
 /* <div class="sl-hr"></div> 制作的一个简单的下划线，用于隔离小标题内容 */
-.sl-hr{
+.sl-hr {
 	border-bottom: 5px solid #80c8f8;
 	height: 2px;
 	margin-bottom: 20px;
 }
+
 /* ********************************************************************* */
 
 
 /* 侧边栏微信图标，显示图片提示 */
 
-a[href *= "weixin.jpg"] i::after{
-	content: ''; 
+a[href *="weixin.jpg"] i::after {
+	content: '';
 	display: flex;
 	opacity: 0;
-	visibility:hidden;
+	visibility: hidden;
 	justify-content: center;
 	align-items: center;
 	width: 150px;
@@ -24,15 +96,16 @@ a[href *= "weixin.jpg"] i::after{
 	z-index: 999;
 	bottom: 120px;
 	background-repeat: no-repeat;
-	background-position:center;
+	background-position: center;
 	background-image: url('https://cdn.jsdelivr.net/gh/SimpleLifecst/simple@main//wechat_aside.jpg');
 	background-size: auto 140px;
-	background-color:rgb(252 252 252);
+	background-color: rgb(252 252 252);
 	overflow: hidden;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 	border-radius: 3px;
 }
-a[href *= "weixin.jpg"]:hover i::after{
+
+a[href *="weixin.jpg"]:hover i::after {
 	opacity: 1;
 	bottom: 100px;
 	visibility: visible;
@@ -47,51 +120,72 @@ a[href *= "weixin.jpg"]:hover i::after{
 #post-info {
 	text-align: center;
 }
+
 /* tabBar文章 */
-@media screen and  (max-width: 768px) {
-	.icon-home,.icon-categories,.icon-goshopping,.icon-profile{
+@media screen and (max-width: 768px) {
+
+	.icon-home,
+	.icon-categories,
+	.icon-goshopping,
+	.icon-profile {
 		font-size: 20px !important;
 	}
-	.copyBtn{
+
+	.copyBtn {
 		right: -37% !important;
 		opacity: 0.4;
 	}
 }
-@media screen and  (max-width: 414px) {
-	.copyBtn{
+
+@media screen and (max-width: 414px) {
+	.copyBtn {
 		right: -23% !important;
 	}
-	
-}
-@media screen and  (min-width: 769px){
-	.icon-home,.icon-categories,.icon-goshopping,.icon-profile{
-		font-size: 40px !important;
-	}
-	
-}
-#copy_content{
-	position: fixed;top: 0;left: 0;opacity: 0;z-index: -10;
+
 }
 
-#sl-tabBar{
+@media screen and (min-width: 769px) {
+
+	.icon-home,
+	.icon-categories,
+	.icon-goshopping,
+	.icon-profile {
+		font-size: 40px !important;
+	}
+
+}
+
+#copy_content {
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: -10;
+}
+
+#sl-tabBar {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.sl-tabBar-item:hover{
+
+.sl-tabBar-item:hover {
 	border: 1px solid #428bca;
 	border-radius: 10px;
 	transition: border 1s;
 }
-.sl-tabBar-item span{
+
+.sl-tabBar-item span {
 	margin-top: -30px;
 }
-.sl-tabBar-item:hover .copyBtn{
-	visibility:visible;
+
+.sl-tabBar-item:hover .copyBtn {
+	visibility: visible;
 	opacity: 1;
 	transition: all 1s linear;
 }
-.copyBtn{
+
+.copyBtn {
 	opacity: 0;
 	visibility: hidden;
 	display: flex;
@@ -109,18 +203,21 @@ a[href *= "weixin.jpg"]:hover i::after{
 	border-top-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 }
-.sl-tabBar-item{
-	border: 1px solid rgba(0,0,0,0);
+
+.sl-tabBar-item {
+	border: 1px solid rgba(0, 0, 0, 0);
 	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
-.sl-tabBar-item-text{
+
+.sl-tabBar-item-text {
 	text-align: center;
 	line-height: 20px;
 }
+
 /* CSS3文章 */
 #CSS3_round,
 #CSS3_stretch {
@@ -155,34 +252,38 @@ a[href *= "weixin.jpg"]:hover i::after{
 	text-shadow: 5px 5px 5px #ff0000;
 	font-size: 25px;
 }
+
 #myfirst {
-    animation: myfirst 4s;
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-		background: blue;
-		color: #FFFFFF;
+	animation: myfirst 4s;
+	width: 100px;
+	height: 100px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: blue;
+	color: #FFFFFF;
 }
-        
+
 @keyframes myfirst {
-    0% {
-        background: blue;
-    }
-    25% {
-        background: yellow;
-        transform: rotate(360deg);
-        transition: all 1s;
-        margin-left: 400px;
-    }
-    50% {
-        background: red;
-    }
-    100% {
-        background: chocolate;
-    }
+	0% {
+		background: blue;
+	}
+
+	25% {
+		background: yellow;
+		transform: rotate(360deg);
+		transition: all 1s;
+		margin-left: 400px;
+	}
+
+	50% {
+		background: red;
+	}
+
+	100% {
+		background: chocolate;
+	}
 }
 
 /* CSS3文章 */
