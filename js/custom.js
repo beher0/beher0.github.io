@@ -24,29 +24,52 @@
  */
 
   var slDiv = document.createElement('div')
+  var navObj =[
+    {
+      url:'',
+      name:'',
+      icon:''
+    },
+    {
+      url:'',
+      name:'',
+      icon:''
+    },
+    {
+      url:'',
+      name:'',
+      icon:''
+    },
+    {
+      url:'',
+      name:'',
+      icon:''
+    },
+    
+  ]
   slDiv.innerHTML = `<div class="sl-aside-container">
   <div class="sl-item sl-item-show">
-    <a href="#">
-    <span class="iconfont icon-zhanku"></span>
-    <span>用户</span>
+    <a href="${navObj[0].url}">
+    <span class="iconfont ${navObj[0].icon}"></span>
+    <span>${navObj[0].name}</span>
     </a>
   </div>
   <div class="sl-item sl-item-show">
-    <a href="#">
-    <span class="iconfont icon-zhanku"></span>
-    <span>用户</span>
+    <a href="${navObj[1].url}">
+    <span class="iconfont ${navObj[1].icon}"></span>
+    <span>${navObj[1].name}</span>
     </a>
   </div>
   <div class="sl-item sl-item-show">
-    <a href="#">
-    <span class="iconfont icon-zhanku"></span>
-    <span>用户</span>
+    <a href="${navObj[1].url}">
+    <span class="iconfont ${navObj[1].icon}"></span>
+    <span>${navObj[1].name}</span>
     </a>
   </div>
   <div class="sl-item sl-item-show">
-    <a href="#">
-    <span class="iconfont icon-zhanku"></span>
-    <span>用户</span>
+    <a href="${navObj[1].url}">
+    <span class="iconfont ${navObj[1].icon}"></span>
+    <span>${navObj[1].name}</span>
     </a>
   </div>
     </div>`
